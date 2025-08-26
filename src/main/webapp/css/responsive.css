@@ -1,0 +1,22 @@
+﻿/* ===== Responsive generales ===== */
+@media (max-width: 992px) {
+  .card-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .login-container { padding: 1rem; flex-direction: column; }
+  .login-card { max-width: 100%; padding: 1rem; }
+
+  .form-group, .form-control { width: 100%; }
+  .btn { font-size: 1rem; padding: .75rem; text-align: center; }
+
+  .topbar { margin-bottom: var(--spacing-lg); }
+  .card { padding: var(--spacing-md); }
+  .card-header { padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md); }
+}
+
+@media (max-width: 480px) {
+  .login-title { font-size: 1.5rem; }
+  .login-subtitle { font-size: .9rem; }
+  .btn { font-size: .9rem; }
+}

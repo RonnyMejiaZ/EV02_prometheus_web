@@ -1,0 +1,22 @@
+# Maven / build
+target/
+*.war
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.nb-configuration/
+.nb-gradle/
+.metadata/
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Postman (opcional: ignora ambientes con secretos)
+postman/*.environment.json

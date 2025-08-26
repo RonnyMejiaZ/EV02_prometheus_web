@@ -1,0 +1,26 @@
+﻿/* ===== Reset + Base tipográfica ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--background-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; color: inherit; }
+
+a { color: inherit; text-decoration: none; }
+button { border: 0; background: none; cursor: pointer; }
+
+table { border-collapse: collapse; width: 100%; }
+
+::selection { background: color-mix(in srgb, var(--primary-color) 35%, transparent); color: #fff; }

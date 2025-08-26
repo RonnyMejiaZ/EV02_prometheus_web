@@ -18,7 +18,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Dashboard - Prometheus</title>
 
-        <!-- Tus estilos reales -->
         <link rel="stylesheet" href="<%=ctx%>/css/reset.css">
         <link rel="stylesheet" href="<%=ctx%>/css/variables.css">
         <link rel="stylesheet" href="<%=ctx%>/css/components.css">
@@ -28,7 +27,6 @@
 
       <body>
         <div class="app-layout">
-          <!-- Sidebar -->
           <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
               <div class="logo">P</div>
@@ -42,7 +40,6 @@
                     <span class="nav-icon">📊</span> Dashboard
                   </a>
                 </li>
-                <!-- Deja estos como placeholder o crea esas páginas bajo /pages/... -->
                 <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">🏠</span> Propiedades</a></li>
                 <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">👥</span> Inquilinos</a></li>
                 <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">📋</span> Alquileres</a></li>
@@ -66,9 +63,7 @@
                 <span>
                   <%= u.getName() %>
                 </span>
-                <!-- Puedes usar enlace directo o el botón con JS -->
                 <a class="btn btn-secondary btn-sm" href="<%=ctx%>/logout">Cerrar sesión</a>
-                <!-- <button class="btn btn-secondary btn-sm" onclick="logout()">Cerrar sesión</button> -->
               </div>
             </div>
 
@@ -124,7 +119,7 @@
           </main>
         </div>
 
-        <!-- Tu JS -->
+        <!-- JS -->
         <script>
           const BASE = '<%=ctx%>';
           function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }

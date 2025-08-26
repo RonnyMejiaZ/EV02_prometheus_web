@@ -10,14 +10,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Login - Prometheus</title>
 
-      <!-- Tus hojas reales; déjalas o cambia nombres según tu proyecto -->
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/variables.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/components.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/layout.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/responsive.css">
 
-      <!-- (Opcional) estilos de la pantalla: muévelos a components.css si prefieres -->
       <style>
         .login-container {
           min-height: 100vh;
@@ -146,7 +144,6 @@
                   <% session.removeAttribute("msg"); %>
                     <% } %>
 
-                      <!-- AHORA el formulario va al Servlet /login (POST) -->
                       <form class="login-form" action="<%=request.getContextPath()%>/login" method="post">
                         <div class="form-group">
                           <label class="form-label" for="email">Correo electrónico</label>
@@ -162,7 +159,6 @@
                       </form>
 
                       <div class="login-footer">
-                        <!-- Enlace correcto usando el contexto y el Servlet /register -->
                         <p>¿No tienes cuenta? <a href="<%=request.getContextPath()%>/register">Regístrate aquí</a></p>
                       </div>
         </div>

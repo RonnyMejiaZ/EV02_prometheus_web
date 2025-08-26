@@ -10,13 +10,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Registro - Prometheus</title>
 
-      <!-- Tus estilos reales -->
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/reset.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/variables.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/components.css">
       <link rel="stylesheet" href="<%=request.getContextPath()%>/css/responsive.css">
 
-      <!-- (Opcional) estilos locales; muévelos a components.css si prefieres -->
       <style>
         .register-container {
           min-height: 100vh;
@@ -116,7 +114,6 @@
                   <% session.removeAttribute("msg"); %>
                     <% } %>
 
-                      <!-- ENVÍA AL Servlet /register (POST) -->
                       <form action="<%=request.getContextPath()%>/register" method="post">
                         <div class="form-group">
                           <label for="name">Nombre completo</label>

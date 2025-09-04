@@ -1,0 +1,87 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c"   uri="jakarta.tags.core" %>
+
+
+                          <td><%= p.getCreatedAt()==null ? "-" : df.format(p.getCreatedAt()) %></td>
+                          <td><%= p.getUpdatedAt()==null ? "-" : df.format(p.getUpdatedAt()) %></td>
+                         <td>
+                        <a class="btn btn-secondary btn-sm"
+                           href="<%=ctx%>/<c:out value="${active}"/>/crear?id=<%=p.getId()%>">✏️ Editar</a>
+
+                        <form action="<%=ctx%>/<c:out value="${active}"/>/eliminar" method="post"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Eliminar la propiedad #<%=p.getId()%>?');">
+                          <input type="hidden" name="id" value="<%=p.getId()%>">
+                          <button class="btn btn-danger btn-sm">🗑 Eliminar</button>
+                        </form>
+                      </td>
+                  </tr>
+        <% } } %>
+        </tbody>
+      </table>
+
+<%
+  java.util.List<?> __pg_items = 
+      (java.util.List<?>) request.getAttribute("items");
+  if (__pg_items == null) __pg_items = java.util.Collections.emptyList();
+
+  Integer __pg_page   = (Integer) request.getAttribute("page");
+  Integer __pg_pages  = (Integer) request.getAttribute("pages");
+  Integer __pg_size   = (Integer) request.getAttribute("size");
+  Integer __pg_total  = (Integer) request.getAttribute("total");
+  String  __pg_q      = (String)  request.getAttribute("q");
+
+  int current   = (__pg_page  == null) ? 0  : __pg_page;
+  int pages     = (__pg_pages == null) ? 1  : __pg_pages;
+  int pageSize  = (__pg_size  == null || __pg_size <= 0) ? 10 : __pg_size;
+  int totalRes  = (__pg_total == null) ? __pg_items.size() : __pg_total;
+
+  int from = (totalRes == 0) ? 0 : current * pageSize + 1;
+  int to   = Math.min(current * pageSize + __pg_items.size(), totalRes);
+
+  String qEncoded = java.net.URLEncoder.encode(__pg_q == null ? "" : __pg_q, "UTF-8");
+%>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px;">
+  <div>
+    Mostrando del <%= from %> al <%= to %> de <%= totalRes %> resultados
+  </div>
+
+  <div>
+    <!-- Anterior -->
+    <a class="btn btn-sm btn-outline"
+       href="<%= current > 0
+              ? (ctx + "/${active}?q=" + qEncoded + "&page=" + (current-1) + "&size=" + pageSize)
+              : "#"%>"
+       style="<%= current == 0 ? "pointer-events:none;opacity:.5;" : "" %>">
+      Anterior
+    </a>
+
+    <!-- Números -->
+    <% for (int i = 0; i < pages; i++) { %>
+      <a class="btn btn-sm <%= (i == current) ? "btn-primary" : "btn-outline" %>"
+         href="<%= ctx %>/${active}?q=<%= qEncoded %>&page=<%= i %>&size=<%= pageSize %>">
+        <%= i + 1 %>
+      </a>
+    <% } %>
+
+    <!-- Siguiente -->
+    <a class="btn btn-sm btn-outline"
+       href="<%= current < pages - 1
+              ? (ctx + "/${active}?q=" + qEncoded + "&page=" + (current+1) + "&size=" + pageSize)
+              : "#"%>"
+       style="<%= current >= pages - 1 ? "pointer-events:none;opacity:.5;" : "" %>">
+      Siguiente
+    </a>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </main>
+</div>
+<script src="<%=ctx%>/js/navigation.js"></script>
+</body>
+</html>

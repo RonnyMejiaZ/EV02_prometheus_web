@@ -35,17 +35,12 @@
 
             <nav>
               <ul class="nav-menu">
-                <li class="nav-item">
-                  <a href="<%=ctx%>/dashboard.jsp" class="nav-link active">
-                    <span class="nav-icon">📊</span> Dashboard
-                  </a>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">🏠</span> Propiedades</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">👥</span> Inquilinos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">📋</span> Alquileres</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">💰</span> Planes de Pagos</a>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link"><span class="nav-icon">👤</span> Perfil</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/dashboard.jsp" class="nav-link active"><span class="nav-icon">📊</span> Dashboard</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/propiedades/listar" class="nav-link"><span class="nav-icon">🏠</span> Propiedades</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/inquilinos/listar" class="nav-link"><span class="nav-icon">👥</span> Inquilinos</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/alquileres/listar" class="nav-link"><span class="nav-icon">📋</span> Alquileres</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/pagos/listar" class="nav-link"><span class="nav-icon">💰</span> Planes de Pagos</a></li>
+                <li class="nav-item"><a href="<%=ctx%>/perfil.jsp" class="nav-link"><span class="nav-icon">👤</span> Perfil</a></li>
               </ul>
             </nav>
           </aside>

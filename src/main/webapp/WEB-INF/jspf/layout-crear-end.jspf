@@ -1,0 +1,21 @@
+          <div style="display:flex;gap:var(--spacing-md);justify-content:flex-end;margin-top:var(--spacing-xl);">
+            <button type="submit" class="btn btn-primary"><%= editing ? "Guardar" : "Crear" %></button>
+            <% if (!editing) { %>
+              <button type="button" class="btn btn-secondary" onclick="submitAndNew()">Crear y crear otro</button>
+            <% } %>
+            <a href="<%=ctx%>/<c:out value="${active}"/>" class="btn btn-secondary">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="<%=ctx%>/js/navigation.js"></script>
+  <script>
+    function submitAndNew() {
+      document.getElementById('again').value = '1';
+      document.getElementById('f').submit();
+    }
+  </script>
+</body>
+</html>

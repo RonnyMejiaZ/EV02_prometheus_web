@@ -1,7 +1,6 @@
 package com.prometheus.web.servlets;
 
 import com.prometheus.web.repo.UserRepository;
-import com.prometheus.web.model.User;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;

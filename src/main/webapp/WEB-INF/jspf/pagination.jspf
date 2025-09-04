@@ -1,0 +1,60 @@
+<%@ taglib prefix="c"  uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+
+<c:set var="pg_ctx"   value="${pageContext.request.contextPath}" />
+<c:set var="pg_base"  value="${not empty param.base ? param.base :
+                              (not empty base ? base : pg_ctx)}" />
+<c:set var="pg_page"  value="${page  != null ? page  : 0}" />
+<c:set var="pg_pages" value="${pages != null ? pages : 1}" />
+<c:set var="pg_size"  value="${size  != null && size > 0 ? size : 10}" />
+<c:set var="pg_total" value="${total != null ? total :
+                              (count != null ? count : (items != null ? fn:length(items) : 0))}" />
+<c:set var="pg_count" value="${count != null ? count : (items != null ? fn:length(items) : 0)}" />
+<c:set var="pg_q"     value="${empty q ? '' : q}" />
+
+<c:set var="pg_from" value="${pg_total == 0 ? 0 : pg_page * pg_size + 1}" />
+<c:set var="pg_to"   value="${pg_page * pg_size + pg_count}" />
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px;">
+  <div>
+    Mostrando del ${pg_from} al ${pg_to} de ${pg_total} resultados
+  </div>
+
+  <div>
+    <!-- Anterior -->
+    <c:url var="prevUrl" value="${pg_base}">
+      <c:param name="q" value="${pg_q}" />
+      <c:param name="page" value="${pg_page - 1}" />
+      <c:param name="size" value="${pg_size}" />
+    </c:url>
+    <a class="btn btn-sm btn-outline"
+       href="${pg_page > 0 ? prevUrl : '#'}"
+       style="${pg_page == 0 ? 'pointer-events:none;opacity:.5;' : ''}">
+      Anterior
+    </a>
+
+    <!-- Números -->
+    <c:forEach var="i" begin="0" end="${pg_pages - 1}">
+      <c:url var="numUrl" value="${pg_base}">
+        <c:param name="q" value="${pg_q}" />
+        <c:param name="page" value="${i}" />
+        <c:param name="size" value="${pg_size}" />
+      </c:url>
+      <a class="btn btn-sm ${i == pg_page ? 'btn-primary' : 'btn-outline'}" href="${numUrl}">
+        ${i + 1}
+      </a>
+    </c:forEach>
+
+    <!-- Siguiente -->
+    <c:url var="nextUrl" value="${pg_base}">
+      <c:param name="q" value="${pg_q}" />
+      <c:param name="page" value="${pg_page + 1}" />
+      <c:param name="size" value="${pg_size}" />
+    </c:url>
+    <a class="btn btn-sm btn-outline"
+       href="${pg_page < pg_pages - 1 ? nextUrl : '#'}"
+       style="${pg_page >= pg_pages - 1 ? 'pointer-events:none;opacity:.5;' : ''}">
+      Siguiente
+    </a>
+  </div>
+</div>

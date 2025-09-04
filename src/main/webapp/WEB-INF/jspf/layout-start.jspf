@@ -1,0 +1,58 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><c:out value="${title}" default="Prometheus" /></title>
+  <link rel="stylesheet" href="<%=ctx%>/css/reset.css">
+  <link rel="stylesheet" href="<%=ctx%>/css/variables.css">
+  <link rel="stylesheet" href="<%=ctx%>/css/components.css">
+  <link rel="stylesheet" href="<%=ctx%>/css/layout.css">
+  <link rel="stylesheet" href="<%=ctx%>/css/responsive.css">
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">P</div><span class="logo-text">PROMETHEUS</span>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="<%=ctx%>/dashboard.jsp" class="nav-link active"><span class="nav-icon">📊</span> Dashboard</a></li>
+        <li class="nav-item"><a href="<%=ctx%>/propiedades/listar" class="nav-link"><span class="nav-icon">🏠</span> Propiedades</a></li>
+        <li class="nav-item"><a href="<%=ctx%>/inquilinos/listar" class="nav-link"><span class="nav-icon">👥</span> Inquilinos</a></li>
+        <li class="nav-item"><a href="<%=ctx%>/alquileres/listar" class="nav-link"><span class="nav-icon">📋</span> Alquileres</a></li>
+        <li class="nav-item"><a href="<%=ctx%>/pagos/listar" class="nav-link"><span class="nav-icon">💰</span> Planes de Pagos</a></li>
+        <li class="nav-item"><a href="<%=ctx%>/perfil/listar" class="nav-link"><span class="nav-icon">👤</span> Perfil</a></li>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰</button>
+      <h1 class="page-title"><c:out value="${title}"/></h1>
+      <div class="user-menu">
+        <a class="btn btn-secondary btn-sm" href="<%=ctx%>/logout">Cerrar sesión</a>
+      </div>
+    </div>
+
+    <% if (msg != null) { %>
+      <div class="badge badge-success" style="margin-bottom:1rem;"><%= msg %></div>
+    <% } %>
+
+    <form method="get" action="<%=ctx%>/<c:out value="${active}"/>" style="margin: 0 0 12px 0; display:flex; gap:8px;">
+    <input class="form-control" type="text" name="q" placeholder="Buscar <c:out value="${active}"/>..."
+         value="<%= q==null ? "" : q %>" style="max-width:360px;">
+      <button class="btn btn-secondary">Buscar</button>
+      <a class="btn btn-outline" href="<%=ctx%>/<c:out value="${active}"/>">Limpiar</a>
+    </form>
+
+
+    <div class="card">
+      <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 class="card-title">Listado</h2>
+        <a class="btn btn-primary" href="<%=ctx%>/<c:out value="${active}"/>/crear">Agregar <c:out value="${title}"/></a>
+      </div>
+
+      <table class="table">
+        <thead>

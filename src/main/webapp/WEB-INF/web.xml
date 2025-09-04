@@ -18,4 +18,13 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 
+  <!-- <servlet>
+    <servlet-name>PropertyServlet</servlet-name>
+    <servlet-class>com.prometheus.web.servlets.PropertyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PropertyServlet</servlet-name>
+    <url-pattern>/propiedades/*</url-pattern>
+  </servlet-mapping> -->
+
 </web-app>

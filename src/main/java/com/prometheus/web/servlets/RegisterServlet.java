@@ -6,9 +6,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+
+  private static long timeRandomId() {
+    long millis = System.currentTimeMillis(); // 13 dígitos
+    int rnd = ThreadLocalRandom.current().nextInt(1000, 10_000); // 4 dígitos
+    return millis * 10_000L + rnd; // ~17 dígitos
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -24,7 +32,10 @@ public class RegisterServlet extends HttpServlet {
     String name = req.getParameter("name");
     String email = req.getParameter("email");
     String password = req.getParameter("password");
-    boolean ok = UserRepository.save(new User(name, email, password));
+
+    long userId = timeRandomId();
+
+    boolean ok = UserRepository.save(new User(userId, name, email, password));
     String ctx = req.getContextPath();
     if (ok) {
       // mensaje “flash” en sesión para mostrarlo tras el redirect

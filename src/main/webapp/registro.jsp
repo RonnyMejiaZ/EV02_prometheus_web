@@ -115,6 +115,7 @@
                     <% } %>
 
                       <form action="<%=request.getContextPath()%>/register" method="post">
+                        
                         <div class="form-group">
                           <label for="name">Nombre completo</label>
                           <input type="text" id="name" name="name" class="form-control" required />

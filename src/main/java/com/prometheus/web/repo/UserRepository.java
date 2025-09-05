@@ -1,6 +1,8 @@
 package com.prometheus.web.repo;
 import com.prometheus.web.model.User;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 public class UserRepository {
   private static final Map<String, User> USERS = new ConcurrentHashMap<>();
@@ -14,4 +16,8 @@ public class UserRepository {
     User u = USERS.get(email); return u!=null && u.getPassword().equals(pass);
   }
   public static User find(String email){ return email==null? null : USERS.get(email); }
+
+  public static synchronized List<User> findAll() {
+        return new ArrayList<>(USERS.values());
+    }
 }

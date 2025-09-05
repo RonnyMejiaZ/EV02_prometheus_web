@@ -31,6 +31,7 @@
 <%@ include file="/WEB-INF/jspf/layout-crear-start.jspf" %>
 
 <form id="f" method="post" action="<%=ctx%>/alquileres/guardar">
+
           <input type="hidden" name="id" value="<%= editing ? item.getId() : 0 %>">
           <% if (!editing) { %><input type="hidden" id="again" name="again" value=""><% } %>
 

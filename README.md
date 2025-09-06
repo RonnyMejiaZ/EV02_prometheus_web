@@ -3,7 +3,7 @@
 ### Ejecutar
 mvn clean package
 # Copia target/prometheus-web.war a TOMCAT/webapps/
-# Abre http://localhost:8080/prometheus-web/
+# Abre http://localhost:8080/prometheus-1.0.0-web/
 ### Flujo probado
 - GET /register -> mostrar formulario
 - POST /register -> registro OK, vuelve a login con mensaje

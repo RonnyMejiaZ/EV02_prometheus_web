@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
     if (UserRepository.validate(email, password)) {
       HttpSession session = req.getSession(true);
       session.setAttribute("user", UserRepository.find(email));
-      resp.sendRedirect(req.getContextPath() + "/dashboard.jsp");
+      resp.sendRedirect(req.getContextPath() + "/dashboard");
     } else {
       req.setAttribute("error", "Credenciales inválidas");
       req.getRequestDispatcher("/login.jsp").forward(req, resp);

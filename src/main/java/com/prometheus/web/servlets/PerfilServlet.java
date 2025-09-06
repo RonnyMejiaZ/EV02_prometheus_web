@@ -68,9 +68,9 @@ public class PerfilServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-        System.out.println("\n=== PerfilServlet.doPost params ===");
-        req.getParameterMap().forEach((k, v) -> System.out.println("  " + k + " => " + java.util.Arrays.toString(v)));
-        System.out.println("===================================\n");
+        // System.out.println("\n=== PerfilServlet.doPost params ===");
+        // req.getParameterMap().forEach((k, v) -> System.out.println("  " + k + " => " + java.util.Arrays.toString(v)));
+        // System.out.println("===================================\n");
 
         String uri = req.getRequestURI();
 
@@ -91,33 +91,35 @@ public class PerfilServlet extends HttpServlet {
 
             PerfilRepository.save(p);
 
-            if (id > 0) {
-                PerfilRepository.update(p);
-                req.getSession().setAttribute("msg", "Perfil actualizado");
-            } else {
-                PerfilRepository.save(p);
-                req.getSession().setAttribute("msg", "Perfil creado");
-            }
 
-            // Si es creación y presionó "Crear y crear otro"
-            String again = req.getParameter("again");
-            if (id == 0 && "1".equals(again)) {
-                resp.sendRedirect(req.getContextPath() + "/perfil/crear");
-                return;
-            }
+            // if (id > 0) {
+            //     PerfilRepository.save(p);
+            //     req.getSession().setAttribute("msg", "Perfil actualizado");
+            // } 
+            // else {
+            //     PerfilRepository.save(p);
+            //     req.getSession().setAttribute("msg", "Perfil creado");
+            // }
+
+            // // Si es creación y presionó "Crear y crear otro"
+            // String again = req.getParameter("again");
+            // if (id == 0 && "1".equals(again)) {
+            //     resp.sendRedirect(req.getContextPath() + "/perfil/crear");
+            //     return;
+            // }
 
             resp.sendRedirect(req.getContextPath() + "/perfil");
             return;
         }
 
-        // ELIMINAR
-        if (uri.endsWith("/perfil/eliminar")) {
-            long id = parseLong(req.getParameter("id"), -1);
-            boolean ok = PerfilRepository.deleteById(id);
-            req.getSession().setAttribute("msg", ok ? "Perfil eliminado" : "No se pudo eliminar");
-            resp.sendRedirect(req.getContextPath() + "/perfil");
-            return;
-        }
+        // // ELIMINAR
+        // if (uri.endsWith("/perfil/eliminar")) {
+        //     long id = parseLong(req.getParameter("id"), -1);
+        //     boolean ok = PerfilRepository.deleteById(id);
+        //     req.getSession().setAttribute("msg", ok ? "Perfil eliminado" : "No se pudo eliminar");
+        //     resp.sendRedirect(req.getContextPath() + "/perfil");
+        //     return;
+        // }
 
         resp.sendError(HttpServletResponse.SC_NOT_FOUND);
     }

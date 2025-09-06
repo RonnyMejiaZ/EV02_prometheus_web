@@ -2,11 +2,14 @@
 <%@ taglib prefix="c"   uri="jakarta.tags.core" %>
 <%@ page import="java.util.*,java.time.format.DateTimeFormatter,com.prometheus.web.model.Perfil" %>
 <%@ page import="com.prometheus.web.model.User" %>
+<% User u=(User) session.getAttribute("user");
+                      if (u==null) {
+                      response.sendRedirect(request.getContextPath()+"/login.jsp"); return; }
+%>
 
 <%
   String ctx = request.getContextPath();
   List<Perfil> items = (List<Perfil>) request.getAttribute("items");
-  User u = (User) session.getAttribute("user");
   String q     = (String) request.getAttribute("q");
   Integer currentPage  = (Integer) request.getAttribute("page");
   Integer totalPages = (Integer) request.getAttribute("pages");

@@ -87,8 +87,8 @@
               <label class="form-label" for="activo">¿Está activo?</label>
               <select id="activo" name="activo" class="form-control">
                 <option value="">Seleccionar…</option>
-                <option value="si" <%= editing && item.isActivo() ? "selected" : "" %>>Sí</option>
-                <option value="no" <%= editing && !item.isActivo() ? "selected" : "" %>>No</option>
+                <option value="1" <%= editing && item.isActivo() ? "selected" : "" %>>Sí</option>
+                <option value="0" <%= editing && !item.isActivo() ? "selected" : "" %>>No</option>
               </select>
             </div>
           

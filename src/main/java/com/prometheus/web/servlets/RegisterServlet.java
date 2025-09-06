@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
     String ctx = req.getContextPath();
     if (ok) {
       // mensaje “flash” en sesión para mostrarlo tras el redirect
-      req.getSession().setAttribute("msg", "Registro exitoso. Inicia sesión.");
+      // req.getSession().setAttribute("msg", "Registro exitoso.");
       resp.setStatus(HttpServletResponse.SC_FOUND); // 302 (opcional, sendRedirect ya lo hace)
       resp.sendRedirect(ctx + "/login.jsp"); // <- 302
     } else {

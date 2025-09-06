@@ -28,7 +28,5 @@
                       <td><%= p.getNombre() %></td>
                       <td><%= p.getDireccion() %></td>
                       <td><span class="badge <%= p.isRentado()? "badge-success":"badge-danger" %>"><%= p.isRentado()? "Sí":"No" %></span></td>
-                      <td><%= p.getCreatedAt()==null ? "-" : df.format(p.getCreatedAt()) %></td>
-                      <td><%= p.getUpdatedAt()==null ? "-" : df.format(p.getUpdatedAt()) %></td>
 <%@ include file="/WEB-INF/jspf/layout-end.jspf" %>
 

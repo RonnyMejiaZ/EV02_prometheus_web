@@ -28,6 +28,5 @@
                       <td><%= p.getFechaInicio() %></td>
                       <td><%= p.getFechaFin() %></td>
                       <td><%= p.getMontoMensual() %></td>
-                      <td><%= p.getInquilinoId() %></td>
 
 <%@ include file="/WEB-INF/jspf/layout-end.jspf" %>                

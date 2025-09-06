@@ -3,13 +3,14 @@
 <%@ page import="com.prometheus.web.model.Perfil" %>
 <%@ page import="java.util.List, java.util.Collections" %>
 <%@ page import="com.prometheus.web.model.User" %>
+<% User u=(User) session.getAttribute("user");
+                      if (u==null) {
+                      response.sendRedirect(request.getContextPath()+"/login.jsp"); return; }
+%>
 <%
   String ctx = request.getContextPath();
   Perfil item = (Perfil) request.getAttribute("item"); // null => crear
   boolean editing = (item != null);
-%>
-<% User u=(User) session.getAttribute("user"); 
-    // if (u==null) { response.sendRedirect(request.getContextPath()+"/login.jsp"); return; } String ctx=request.getContextPath();
 %>
 
 <c:set var="title" value="Perfil"/>
@@ -36,7 +37,7 @@
       </div>
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="<%=ctx%>/dashboard.jsp" class="nav-link active"><span class="nav-icon">📊</span> Dashboard</a></li>
+          <li class="nav-item"><a href="<%=ctx%>/dashboard" class="nav-link active"><span class="nav-icon">📊</span> Dashboard</a></li>
             <li class="nav-item"><a href="<%=ctx%>/propiedades/listar" class="nav-link"><span class="nav-icon">🏠</span> Propiedades</a></li>
             <li class="nav-item"><a href="<%=ctx%>/inquilinos/listar" class="nav-link"><span class="nav-icon">👥</span> Inquilinos</a></li>
             <li class="nav-item"><a href="<%=ctx%>/alquileres/listar" class="nav-link"><span class="nav-icon">📋</span> Alquileres</a></li>
@@ -89,7 +90,7 @@
             <div class="form-group">
               <label class="form-label" for="telefono">Teléfono</label>
               <input type="text" id="telefono" name="telefono" class="form-control"
-                     value="<%= editing ? item.getTelefono() : "" %>" required>
+                     value="<%= editing ? item.getTelefono() : "" %>" >
             </div>
           
             <div class="form-group">

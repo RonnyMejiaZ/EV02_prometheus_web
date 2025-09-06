@@ -75,6 +75,10 @@ public class AlquilerServlet extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     resp.setCharacterEncoding("UTF-8");
 
+    // System.out.println("\n=== PerfilServlet.doPost params ===");
+    //     req.getParameterMap().forEach((k, v) -> System.out.println("  " + k + " => " + java.util.Arrays.toString(v)));
+    //     System.out.println("===================================\n");
+
     String uri = req.getRequestURI();
 
     // CREAR o EDITAR (un solo endpoint)

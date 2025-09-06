@@ -3,7 +3,7 @@
             <%-- <% if (!editing) { %>
               <button type="button" class="btn btn-secondary" onclick="submitAndNew()">Crear y crear otro</button>
             <% } %> --%>
-            <a href="<%=ctx%>/<c:out value="${active}"/>" class="btn btn-secondary">Cancelar</a>
+            <a href="<%=ctx%>/<c:out value="${active}/listar"/>" class="btn btn-secondary">Cancelar</a>
           </div>
         </form>
       </div>

@@ -102,7 +102,7 @@
 
           <div style="display:flex;gap:var(--spacing-md);justify-content:flex-end;margin-top:var(--spacing-xl);">
             <button type="submit" class="btn btn-primary"><%= "Guardar" %></button>
-            <a href="<%=ctx%>/<c:out value="${active}"/>" class="btn btn-secondary">Cancelar</a>
+            <a href="<%=ctx%>/<c:out value="${active}/listar"/>" class="btn btn-secondary">Cancelar</a>
           </div>
         </form>
       </div>
